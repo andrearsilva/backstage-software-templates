@@ -1,2 +1,0 @@
-appname = ${{values.app_name}}
-appenv = ${{values.app_env}}
