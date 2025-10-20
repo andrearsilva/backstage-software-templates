@@ -26,6 +26,12 @@ spec:
           enum:
             - dev
             - prod
+        app_port:
+          title: Application port
+          type: integer # Changed from string to integer
+          description: Provide a port number between 5001 and 5999
+          minimum: 5001 # Sets the lowest acceptable value (inclusive)
+          maximum: 5999 # Sets the highest acceptable value (inclusive)
 
   steps:
     - id: fetch-base
@@ -36,7 +42,7 @@ spec:
         values:
           app_name: ${{parameters.component_id}}
           app_env: ${{parameters.environment}}
-
+          app_port: ${{parameters.app_port}}
     - id: publish
       name: Publish
       action: publish:github
