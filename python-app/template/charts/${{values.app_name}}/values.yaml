@@ -1,18 +1,18 @@
 replicaCount: 1
 image:
-  repository: "andreavix/${{values.app_name}}"
+  repository: andrearsilvavip/${{values.app_name}}
   pullPolicy: IfNotPresent
-  tag: 0add93
+  tag: ${{values.app_name}}-${{values.app_env}}-latest
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+podAnnotations: {}
+podLabels: {}
 serviceAccount:
   create: false
   automount: true
   annotations: {}
   name: ""
-podAnnotations: {}
-podLabels: {}
 podSecurityContext: {}
 securityContext: {}
 service:
@@ -23,33 +23,23 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: ${{values.app_name}}.test.com
+    - host: ${{values.app_name}}-${{values.app_env}}.test.com
       paths:
         - path: /
           pathType: Prefix
   tls: []
-httpRoute:
-  enabled: false
-  annotations: {}
-  parentRefs:
-    - name: gateway
-      sectionName: http
-  hostnames:
-    - chart-example.local
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /headers
-resources: {}
+resources:
+  requests:
+    cpu: 50m
+    memory: 50M
 livenessProbe:
   httpGet:
     path: /api/v1/healthz
-    port: ${{values.port}}
+    port: http
 readinessProbe:
   httpGet:
     path: /api/v1/healthz
-    port: ${{values.port}}
+    port: http
 autoscaling:
   enabled: false
   minReplicas: 1
