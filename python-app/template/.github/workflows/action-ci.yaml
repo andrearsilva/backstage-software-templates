@@ -47,11 +47,12 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'update image tag "${{'${{needs.ci.outputs.commit_id}}'}}" on values.yaml '
+
       - name: Install argocd
         shell: bash
         run: |
-          curl -ksSL -o argocd https://argocd-server.argocd/download/argocd-linux-amd64
-          chmod +x argocd
+          curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          chmod +x argocd 
           sudo mv ./argocd /usr/local/bin/argocd
 
       - name: argocd login
@@ -68,7 +69,7 @@ jobs:
         run: |
 
           # Connects the argocd repo
-          repo="https://github.com/ricardoandre-97/${{values.app_name}}.git"
+          repo="https://github.com/andrearsilvavip/${{values.app_name}}.git"
           argocd repo list | grep -q $repo || argocd repo add $repo
 
           # Creates the argocd app
