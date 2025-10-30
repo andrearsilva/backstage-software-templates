@@ -17,7 +17,7 @@ podSecurityContext: {}
 securityContext: {}
 service:
   type: ClusterIP
-  port: 5000
+  port: ${{values.app_port}}
 ingress:
   enabled: true
   className: "nginx"

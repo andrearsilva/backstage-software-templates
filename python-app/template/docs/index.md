@@ -20,8 +20,8 @@ Aplicação simples em Flask para exibir informações do servidor e realizar he
    ```
 
 3. Acesse os endpoints:
-   - [http://localhost:5000/api/v1/details](http://localhost:5000/api/v1/details)
-   - [http://localhost:5000/api/v1/healthz](http://localhost:5000/api/v1/healthz)
+   - [http://${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}}/api/v1/details](http://localhost:5000/api/v1/details)
+   - [http://${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}}/api/v1/healthz](http://localhost:5000/api/v1/healthz)
 
 ## Docker
 
@@ -29,7 +29,7 @@ Para rodar via Docker:
 
 ```sh
 docker build -t ${{values.app_name}} .
-docker run -p 5000:5000 ${{values.app_name}}
+docker run -p ${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}} ${{values.app_name}}
 ```
 
 ## Kubernetes
