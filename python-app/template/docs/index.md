@@ -29,7 +29,7 @@ Para rodar via Docker:
 
 ```sh
 docker build -t ${{values.app_name}} .
-docker run -p ${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}} ${{values.app_name}}
+docker run -p ${{values.app_name}}-${{values.app_env}}.test.com:5000${{values.app_name}}
 ```
 
 ## Kubernetes
