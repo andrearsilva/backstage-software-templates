@@ -1,5 +1,5 @@
 httpRoute:
-  enabled: false  # ou true se quiser ativar
+  enabled: true  # ou true se quiser ativar
 replicaCount: 2
 
 resources:

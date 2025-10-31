@@ -20,8 +20,8 @@ Aplicação simples em Flask para exibir informações do servidor e realizar he
    ```
 
 3. Acesse os endpoints:
-   - [http://${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}}/api/v1/details](http://localhost:5000/api/v1/details)
-   - [http://${{values.app_name}}-${{values.app_env}}.test.com:${{values.app_port}}/api/v1/healthz](http://localhost:5000/api/v1/healthz)
+   - [http://${{values.app_name}}-${{values.app_env}}.test.com/api/v1/details](http://${{values.app_name}}-${{values.app_env}}:5000/api/v1/details)
+   - [http://${{values.app_name}}-${{values.app_env}}.test.com/api/v1/healthz](http://${{values.app_name}}-${{values.app_env}}:5000/api/v1/healthz)
 
 ## Docker
 
